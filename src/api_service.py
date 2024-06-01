@@ -15,7 +15,16 @@ class WorkingHH(ApiService):
         self.url_get = url_get
         super().__init__(url_get)
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.url_get}')"
+
     def load_vacancies(self, keyword):
-        response = requests.get(self.url_get, params={'text': keyword, 'area': '113', 'per_page': 100})
+        response = requests.get(self.url_get, params={'text': keyword, 'area': '113',
+                                                      'per_page': input('Введите кол-во вакансий для поиска: ')})
         vacancies = response.json()['items']
         return vacancies
+
+
+# if __name__ == '__main__':
+#     x = WorkingHH()
+#     print(x.load_vacancies('python')[0])
