@@ -3,6 +3,7 @@ from src.api_service import WorkingHH
 
 
 def work_with_user():
+    vac_list = []
     keyword = input('Введите запрос для поиска: ')
     if keyword == '':
         print('Вы не ввели запрос. Будут выведены любые вакансии.')
@@ -17,5 +18,8 @@ def work_with_user():
         print('Не может быть больше 100')
         input('Нажмите Enter, чтобы продолжить вывод 100 вакансий.')
     x = WorkingHH().load_vacancies(keyword, number)
-    for i in Vacancies.create_vacancies(x):
-        print(f'\n{i}')
+    for visual_vac in Vacancies.create_vacancies(x):
+        print(f'\n{visual_vac}')
+    for default_vac in WorkingHH().load_vacancies(keyword, number):
+        vac_list.append(default_vac)
+    return vac_list

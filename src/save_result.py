@@ -1,15 +1,18 @@
 from abc import ABC, abstractmethod
+import json
+from src.function import work_with_user
 
 
-class SaveResult(ABC):
-
+class FileWorking(ABC):
     @abstractmethod
-    def __init__(self):
-        super().__init__()
+    def file_working(self):
         pass
 
 
-class SaveResultInFile(SaveResult):
-
+class SaveResult(FileWorking):
     def __init__(self):
-        super().__init__()
+        self.vac_list = work_with_user()
+
+    def file_working(self):
+        with open('./data/vacations.json', 'w', ) as file:
+            json.dump(self, file, indent=4, ensure_ascii=False)
