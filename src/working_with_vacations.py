@@ -63,7 +63,15 @@ class Vacancies(WorkingHH):
 
 
 # if __name__ == '__main__':
-#     x = WorkingHH().load_vacancies('Python')
+#     keyword = input('Введите запрос для поиска: ')
+#     number = input('Введите кол-во вакансий для поиска: ')
+#     if number == '':
+#         number = 1
+#     if int(number) > 100:
+#         number = 100
+#         print('Не может быть больше 100')
+#         input('Нажмите Enter, чтобы продолжить вывод 100 вакансий.')
+#     x = WorkingHH().load_vacancies(keyword, number)
 #     print(Vacancies.create_vacancies(x)[0].name)
 #     print(Vacancies.create_vacancies(x)[0].url)
 #     print(Vacancies.create_vacancies(x)[0].area)
@@ -73,4 +81,4 @@ class Vacancies(WorkingHH):
 #     print(Vacancies.create_vacancies(x)[0].requirement)
 #
 #     for i in Vacancies.create_vacancies(x):
-#         print(f'{i}\n')
+#         print(f'\n{i}')
