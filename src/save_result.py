@@ -7,3 +7,9 @@ class SaveResult(ABC):
     def __init__(self):
         super().__init__()
         pass
+
+
+class SaveResultInFile(SaveResult):
+
+    def __init__(self):
+        super().__init__()
