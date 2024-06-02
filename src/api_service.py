@@ -3,25 +3,19 @@ import requests
 
 
 class ApiService(ABC):
-
     @abstractmethod
-    def __init__(self, *args, **kwargs):
+    def load_vacancies(self, keyword, number):
         pass
 
 
 class WorkingHH(ApiService):
 
-    def __init__(self, url_get='https://api.hh.ru/vacancies'):
-        self.url_get = url_get
-        super().__init__(url_get)
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}('{self.url_get}')"
+    def __init__(self):
+        self.url_get = 'https://api.hh.ru/vacancies'
 
     def load_vacancies(self, keyword, number):
         response = requests.get(self.url_get, params={'text': keyword, 'area': '113', 'per_page': number})
-        vacancies = response.json()['items']
-        return vacancies
+        return response.json()['items']
 
 
 # if __name__ == '__main__':

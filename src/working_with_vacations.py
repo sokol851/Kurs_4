@@ -19,7 +19,7 @@ class Vacancies(WorkingHH):
                 f'Заработная плата: от {self.salary_from} до {self.salary_to} {self.currency}\n'
                 f'Местоположение: {self.area}\n'
                 f'Требования: {self.requirement}\n'
-                f'Сылка на ваканисию: {self.url}')
+                f'Сcылка на ваканисию: {self.url}')
 
     def validate(self):
         if self.area is None:
