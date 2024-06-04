@@ -34,7 +34,7 @@ class Vacancies:
         if self.salary_from is None:
             self.salary_from = 0
         if self.salary_to is None:
-            self.salary_to = self.salary_from
+            self.salary_to = 0
         if self.currency is None:
             self.currency = ''
         if self.requirement is None:
