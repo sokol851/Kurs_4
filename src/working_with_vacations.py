@@ -1,7 +1,7 @@
 from src.api_service import WorkingHH
 
 
-class Vacancies(WorkingHH):
+class Vacancies:
 
     def __init__(self, name, salary_from, salary_to, currency, area, requirement, url):
         self.name = name
@@ -14,12 +14,19 @@ class Vacancies(WorkingHH):
         super().__init__()
         self.validate()
 
+    def __repr__(self):
+        return (f"{self.__class__.__name__}('{self.name}','{self.salary_from}','{self.salary_to}','{self.currency}',"
+                f"'{self.area}','{self.requirement}', '{self.url}')")
+
     def __str__(self):
         return (f'Вакансия: {self.name}\n'
                 f'Заработная плата: от {self.salary_from} до {self.salary_to} {self.currency}\n'
                 f'Местоположение: {self.area}\n'
                 f'Требования: {self.requirement}\n'
                 f'Сcылка на ваканисию: {self.url}')
+
+    def __lt__(self, other):
+        return self.salary_from < other.salary_from
 
     def validate(self):
         if self.area is None:
@@ -33,9 +40,14 @@ class Vacancies(WorkingHH):
         if self.requirement is None:
             self.requirement = 'Не указано'
 
-    def __repr__(self):
-        return (f"{self.__class__.__name__}('{self.name}','{self.salary_from}','{self.salary_to}','{self.currency}',"
-                f"'{self.area}','{self.requirement}', '{self.url}')")
+    def to_json(self):
+        return {'name': self.name,
+                'salary_from': self.salary_from,
+                'salary_to': self.salary_to,
+                'currency': self.currency,
+                'area': self.area,
+                'requirement': self.requirement,
+                'url': self.url}
 
     @classmethod
     def create_vacancies(cls, data):
@@ -59,7 +71,7 @@ class Vacancies(WorkingHH):
             requirement = vac.get('snippet').get('requirement')
             vacancy = cls(name, salary_from, salary_to, currency, area, requirement, url)
             vacancies.append(vacancy)
-        return vacancies
+        return sorted(vacancies)
 
 
 # if __name__ == '__main__':
@@ -71,7 +83,7 @@ class Vacancies(WorkingHH):
 #         number = 100
 #         print('Не может быть больше 100')
 #         input('Нажмите Enter, чтобы продолжить вывод 100 вакансий.')
-#     x = WorkingHH().load_vacancies(keyword, number)
+#     x = WorkingHH().get_vacancies(keyword, number)
 #     print(Vacancies.create_vacancies(x)[0].name)
 #     print(Vacancies.create_vacancies(x)[0].url)
 #     print(Vacancies.create_vacancies(x)[0].area)

@@ -17,9 +17,9 @@ def work_with_user():
         number = 100
         print('Не может быть больше 100')
         input('Нажмите Enter, чтобы продолжить вывод 100 вакансий.')
-    x = WorkingHH().load_vacancies(keyword, number)
+    x = WorkingHH().get_vacancies(keyword, number)
     for visual_vac in Vacancies.create_vacancies(x):
         print(f'\n{visual_vac}')
-    for default_vac in WorkingHH().load_vacancies(keyword, number):
+    for default_vac in WorkingHH().get_vacancies(keyword, number):
         vac_list.append(default_vac)
     return vac_list
