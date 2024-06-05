@@ -11,7 +11,6 @@ class Vacancies:
         self.currency = currency
         self.url = url
         self.requirement = requirement
-        super().__init__()
         self.validate()
 
     def __repr__(self):
@@ -27,6 +26,9 @@ class Vacancies:
 
     def __lt__(self, other):
         return self.salary_from < other.salary_from
+
+    def __gt__(self, other):
+        return self.salary_from > other.salary_from
 
     def validate(self):
         if self.area is None:
@@ -71,7 +73,7 @@ class Vacancies:
             requirement = vac.get('snippet').get('requirement')
             vacancy = cls(name, salary_from, salary_to, currency, area, requirement, url)
             vacancies.append(vacancy)
-        return sorted(vacancies)
+        return vacancies
 
 
 # if __name__ == '__main__':
