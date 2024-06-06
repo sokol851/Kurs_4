@@ -24,12 +24,6 @@ class Vacancies:
                 f'Требования: {self.requirement}\n'
                 f'Сcылка на ваканисию: {self.url}')
 
-    def __lt__(self, other):
-        return self.salary_from < other.salary_from
-
-    def __gt__(self, other):
-        return self.salary_from > other.salary_from
-
     def validate(self):
         if self.area is None:
             self.area = 'Не указано'
@@ -74,25 +68,3 @@ class Vacancies:
             vacancy = cls(name, salary_from, salary_to, currency, area, requirement, url)
             vacancies.append(vacancy)
         return vacancies
-
-
-# if __name__ == '__main__':
-#     keyword = input('Введите запрос для поиска: ')
-#     number = input('Введите кол-во вакансий для поиска: ')
-#     if number == '':
-#         number = 1
-#     if int(number) > 100:
-#         number = 100
-#         print('Не может быть больше 100')
-#         input('Нажмите Enter, чтобы продолжить вывод 100 вакансий.')
-#     x = WorkingHH().get_vacancies(keyword, number)
-#     print(Vacancies.create_vacancies(x)[0].name)
-#     print(Vacancies.create_vacancies(x)[0].url)
-#     print(Vacancies.create_vacancies(x)[0].area)
-#     print(Vacancies.create_vacancies(x)[0].salary_from)
-#     print(Vacancies.create_vacancies(x)[0].salary_to)
-#     print(Vacancies.create_vacancies(x)[0].currency)
-#     print(Vacancies.create_vacancies(x)[0].requirement)
-#
-#     for i in Vacancies.create_vacancies(x):
-#         print(f'\n{i}')

@@ -18,8 +18,3 @@ class WorkingHH(ApiService):
         response = requests.get(self.url_get, params={'text': keyword, 'area': '113', 'per_page': number})
         result = response.json()['items']
         return result
-
-
-# if __name__ == '__main__':
-#     x = WorkingHH()
-#     print(x.load_vacancies('python')[0])

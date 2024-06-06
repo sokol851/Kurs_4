@@ -2,22 +2,21 @@ from src.working_with_vacations import Vacancies
 from src.api_service import WorkingHH
 from src.work_with_file import WorkWithJSON
 import os
+from config import ROOT_DIR
 
 
 def gives_choice():
-    path_vacancies = os.path.abspath('../data/vacancies.json')
-    path_save_vacancies = os.path.abspath('../data/save_vacancies.json')
-    vacancies = WorkWithJSON(path_vacancies)
-    save_vacancies = WorkWithJSON(path_save_vacancies)
-    print('Приветствую!')
+    path_save_vacancies = os.path.join(ROOT_DIR, 'data', 'vacancies.json')
+    vacancies = WorkWithJSON(path_save_vacancies)
+    print('Приветствую! Данное меню предназначено для работы с вакансиями на HeadHunter.ru')
     while True:
         print('\n1. Поиск вакансий.\n'
-              '2. Запись найденых вакансий в список.\n'
-              '3. Удалить вакансию по URL\n'
-              '4. Просмотр сохранённого списка.\n'
-              '5. Фильтр вакансий по ключевому слову.\n'
-              '6. Сортировка списка по зар. плате. (По убыванию)\n'
-              '7. Сортировка списка по зар. плате. (По возрастанию)\n'
+              '2. Удалить вакансию по URL.\n'
+              '3. Просмотр сохранённого списка.\n'
+              '4. Фильтр вакансий по ключевому слову.\n'
+              '5. Фильтр вакансий по заработной плате.\n'
+              '6. Сортировка списка по заработной плате (По возрастанию).\n'
+              '7. Сортировка списка по заработной плате (По убыванию).\n'
               '8. Очистка сохранённого списка.\n'
               '9. Завершить работу.')
         number = input('Выберите необходимое действие (цифра от 1 до 9):\n')
@@ -32,28 +31,32 @@ def gives_choice():
             for i in list_vacancies:
                 vacancies.add_vacancy(i)
         if int(number) == 2:
-            x = vacancies.read_vacancy()
-            for i in x:
-                save_vacancies.add_vacancy(i)
-            # list_vacancies = []
-            # for k in Vacancies.create_vacancies(vacancies.read_vacancy()):
-            #     list_vacancies.append(Vacancies.to_json(k))
-            # save_vacancies.add_vacancy(list_vacancies)
+            vacancies.del_vacancy(input('Введите URL для удаления: '))
         if int(number) == 3:
-            save_vacancies.del_vacancy(input('Введите URL для удаления: '))
-        if int(number) == 4:
-            vac_list = save_vacancies.read_vacancy()
+            vac_list = vacancies.read_vacancy()
             visual_vac_list = Vacancies.create_vacancies(vac_list)
             for i in visual_vac_list:
                 print(f'\n{i}')
+        if int(number) == 4:
+            vacancies.filter_by_keyword(input('Введите ключевые слова через запятую (первое,второе): '))
         if int(number) == 5:
-            save_vacancies.filter_by_keyword(input('Введите ключевые слова через запятую (первое,второе):'))
-        # if int(number) == 6:
-            # sorted(save_vacancies.read_vacancy(), key=lambda x: x.salary_from)
-        # if int(number) == 7:
-            # sorted(save_vacancies.read_vacancy(), key=lambda x: x.salary_from)
+            vacancies.filter_by_salary(input('Введите желаемую оплату: '))
+        if int(number) == 6:
+            for i in vacancies.sort_to_salary_from()[0]:
+                print(f'\n{i}')
+            print(f'Записать результат?')
+            input_user = input('Введите "да" или "нет": ')
+            if input_user.lower() == 'да':
+                vacancies.write_vacancy(vacancies.sort_to_salary_from()[1])
+        if int(number) == 7:
+            for i in vacancies.sort_to_salary_from()[0][::-1]:
+                print(f'\n{i}')
+            print(f'Записать результат?')
+            input_user = input('Введите "да" или "нет": ')
+            if input_user.lower() == 'да':
+                vacancies.write_vacancy(vacancies.sort_to_salary_from()[1][::-1])
         if int(number) == 8:
-            save_vacancies.clear_json()
+            vacancies.clear_json()
             print('Список очищен')
         if int(number) == 9:
             return print('Работа завершена!')
@@ -80,7 +83,3 @@ def vacancies_output():
     for default_vac in WorkingHH().get_vacancies(keyword, number):
         vac_list.append(default_vac)
     return vac_list
-
-
-if __name__ == '__main__':
-    gives_choice()
