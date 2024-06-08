@@ -22,6 +22,8 @@ def gives_choice():
     path_vacancies = os.path.join(ROOT_DIR, 'data', 'vacancies.json')
     vacancies = WorkWithJSON(path_vacancies)
     list_vacancies = []
+    vac = Vacancies('name', 'salary_from', 'salary_to', 'currency',
+                    'area', 'requirement', 'url')
     print('Приветствую! Данное меню предназначено для работы с вакансиями на HeadHunter.ru')
     while True:
         print('\n1. Поиск вакансий.\n'
@@ -42,7 +44,7 @@ def gives_choice():
             number = input('Выберите необходимое действие (цифра от 1 до 11):\n')
             number = number.strip(' ')
         if int(number) == 1:
-            list_vacancies = Vacancies.vacancies_output()
+            list_vacancies = vac.vacancies_output()
             print(f'Записать все результаты?')
             input_user = input('Введите "да" или "нет": ')
             if input_user.lower() == 'да':
@@ -53,7 +55,7 @@ def gives_choice():
             vacancies.del_vacancy(input('Введите URL для удаления (можно через запятую): '))
         if int(number) == 4:
             vac_list = vacancies.read_vacancy()
-            visual_vac_list = Vacancies.create_vacancies(vac_list)
+            visual_vac_list = vac.create_vacancies(vac_list)
             for i in visual_vac_list:
                 print(f'\n{i}')
             print(f'\nВ списке {len(vac_list)} вакансий.')

@@ -47,6 +47,8 @@ class WorkWithJSON(FileWorking):
             self.write_vacancy([])
         else:
             self.__path = os.path.join(ROOT_DIR, 'data', file_name)
+        self.__vac = Vacancies('name', 'salary_from', 'salary_to', 'currency',
+                               'area', 'requirement', 'url')
 
     def read_vacancy(self) -> list[dict]:
         with open(self.__path, 'r', encoding="utf8") as file:
@@ -82,10 +84,8 @@ class WorkWithJSON(FileWorking):
         file_vacancy: list[dict] = []
         self.write_vacancy(file_vacancy)
 
-    @classmethod
-    def filter_by_keyword(cls, keywords: str):
-        vacancies = cls('vacancies.json')
-        list_vacancies = vacancies.read_vacancy()
+    def filter_by_keyword(self, keywords: str):
+        list_vacancies = self.read_vacancy()
         vac_list_filter = []
         list_keyword = keywords.replace(' ', '').lower().split(',')
         if list_vacancies is not None:
@@ -95,18 +95,16 @@ class WorkWithJSON(FileWorking):
                         if keyword in (i['name']).lower() or keyword in (i['snippet']['requirement']).lower():
                             if i not in vac_list_filter:
                                 vac_list_filter.append(i)
-        for i in Vacancies.create_vacancies(vac_list_filter):
+        for i in self.__vac.create_vacancies(vac_list_filter):
             print(f'\n{i}')
         print(f'\nНайдено по ключевым словам {len(vac_list_filter)} вакансий.')
         print(f'Записать результат?')
         input_user = input('Введите "да" или "нет": ')
         if input_user.lower() == 'да':
-            vacancies.write_vacancy(vac_list_filter)
+            self.write_vacancy(vac_list_filter)
 
-    @classmethod
-    def filter_by_salary(cls, salary: str):
-        vacancies = cls('vacancies.json')
-        list_vacancies = vacancies.read_vacancy()
+    def filter_by_salary(self, salary: str):
+        list_vacancies = self.read_vacancy()
         vac_list_filter = []
         if not salary.isdigit():
             while not salary.isdigit():
@@ -126,18 +124,16 @@ class WorkWithJSON(FileWorking):
                             if int(i['salary']['to']) >= int(salary):
                                 if i not in vac_list_filter:
                                     vac_list_filter.append(i)
-        for i in Vacancies.create_vacancies(vac_list_filter):
+        for i in self.__vac.create_vacancies(vac_list_filter):
             print(f'\n{i}')
         print(f'\nНайдено по заработной плате {len(vac_list_filter)} вакансий.')
         print(f'Записать результат?')
         input_user = input('Введите "да" или "нет": ')
         if input_user.lower() == 'да':
-            vacancies.write_vacancy(vac_list_filter)
+            self.write_vacancy(vac_list_filter)
 
-    @classmethod
-    def filter_by_area(cls, area: str):
-        vacancies = cls('vacancies.json')
-        list_vacancies = vacancies.read_vacancy()
+    def filter_by_area(self, area: str):
+        list_vacancies = self.read_vacancy()
         vac_list_filter = []
         area = area.replace(' ', '').lower()
         if list_vacancies is not None:
@@ -145,13 +141,13 @@ class WorkWithJSON(FileWorking):
                 if area in (vac['area']['name']).lower():
                     if vac not in vac_list_filter:
                         vac_list_filter.append(vac)
-        for i in Vacancies.create_vacancies(vac_list_filter):
+        for i in self.__vac.create_vacancies(vac_list_filter):
             print(f'\n{i}')
         print(f'\nНайдено по ключевым словам {len(vac_list_filter)} вакансий.')
         print(f'Записать результат?')
         input_user = input('Введите "да" или "нет": ')
         if input_user.lower() == 'да':
-            vacancies.write_vacancy(vac_list_filter)
+            self.write_vacancy(vac_list_filter)
 
     def sort_to_salary_from(self) -> list[list[dict]]:
         vac_list = self.read_vacancy()
@@ -160,5 +156,5 @@ class WorkWithJSON(FileWorking):
                         key=lambda x: x['salary']['from'] if x['salary'] and x['salary']['from'] is not None else 0,
                         reverse=False):
             sorted_vac_list.append(i)
-        visual_vac_list = Vacancies.create_vacancies(sorted_vac_list)
+        visual_vac_list = self.__vac.create_vacancies(sorted_vac_list)
         return [visual_vac_list, sorted_vac_list]

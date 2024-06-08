@@ -8,63 +8,65 @@ class Vacancies:
     Методы:
         create_vacancies(cls, data) - получает JSON список и формирует список экземпляров вакансий.
     """
+
     def __init__(self, name, salary_from, salary_to, currency, area, requirement, url):
-        self.name = name
-        self.area = area
-        self.salary_from = salary_from
-        self.salary_to = salary_to
-        self.currency = currency
-        self.url = url
-        self.requirement = requirement
+        self.__name = name
+        self.__area = area
+        self.__salary_from = salary_from
+        self.__salary_to = salary_to
+        self.__currency = currency
+        self.__url = url
+        self.__requirement = requirement
 
     def __repr__(self):
-        return (f"{self.__class__.__name__}('{self.name}','{self.salary_from}','{self.salary_to}','{self.currency}',"
-                f"'{self.area}','{self.requirement}', '{self.url}')")
+        return (f"{self.__class__.__name__}('{self.__name}','{self.__salary_from}','{self.__salary_to}',"
+                f"'{self.__currency}','{self.__area}','{self.__requirement}', '{self.__url}')")
 
     def __str__(self):
-        return (f'Вакансия: {self.name}\n'
-                f'Заработная плата: от {self.salary_from} до {self.salary_to} {self.currency}\n'
-                f'Местоположение: {self.area}\n'
-                f'Требования: {self.requirement}\n'
-                f'Сcылка на ваканисию: {self.url}')
+        return (f'Вакансия: {self.__name}\n'
+                f'Заработная плата: от {self.__salary_from} до {self.__salary_to} {self.__currency}\n'
+                f'Местоположение: {self.__area}\n'
+                f'Требования: {self.__requirement}\n'
+                f'Сcылка на ваканисию: {self.__url}')
 
-    @classmethod
-    def create_vacancies(cls, data):
+    def to_json(self):
+        return Vacancies(self.__name, self.__salary_from, self.__salary_to, self.__currency, self.__area,
+                         self.__requirement, self.__url)
+
+    def create_vacancies(self, data):
         vacancies = []
         for vac in data:
-            name = vac.get('name')
-            url = vac.get('alternate_url')
-            area = vac.get('area').get('name')
+            self.__name = vac.get('name')
+            self.__url = vac.get('alternate_url')
+            self.__area = vac.get('area').get('name')
             try:
                 if vac.get('salary').get('from') is None:
-                    salary_from = 0
+                    self.__salary_from = 0
                 else:
-                    salary_from = vac.get('salary').get('from')
+                    self.__salary_from = vac.get('salary').get('from')
             except AttributeError:
-                salary_from = 0
+                self.__salary_from = 0
             try:
                 if vac.get('salary').get('to') is None:
-                    salary_to = 0
+                    self.__salary_to = 0
                 else:
-                    salary_to = vac.get('salary').get('to')
+                    self.__salary_to = vac.get('salary').get('to')
             except AttributeError:
-                salary_to = 0
+                self.__salary_to = 0
             try:
-                currency = vac.get('salary').get('currency')
+                self.__currency = vac.get('salary').get('currency')
             except AttributeError:
-                currency = ''
+                self.__currency = ''
             if vac.get('snippet').get('requirement') is None:
-                requirement = 'Не указано.'
+                self.__requirement = 'Не указано.'
             else:
-                requirement = ((vac.get('snippet').get('requirement')).replace('<highlighttext>', '<')
-                               .replace('</highlighttext>', '>'))
-
-            vacancy = cls(name, salary_from, salary_to, currency, area, requirement, url)
+                self.__requirement = ((vac.get('snippet').get('requirement')).replace('<highlighttext>', '<')
+                                      .replace('</highlighttext>', '>'))
+            vacancy = self.to_json()
             vacancies.append(vacancy)
         return vacancies
 
-    @staticmethod
-    def vacancies_output() -> list[dict]:
+    def vacancies_output(self) -> list[dict]:
         """
         Функция формирует запрос для API с проверками ввода данных и выводит список готовых вакансий
         """
@@ -83,7 +85,7 @@ class Vacancies:
             print('Не может быть больше 100')
             input('Нажмите Enter, чтобы продолжить вывод 100 вакансий.')
         x = WorkingHH().get_vacancies(keyword, number)
-        for visual_vac in Vacancies.create_vacancies(x):
+        for visual_vac in self.create_vacancies(x):
             print(f'\n{visual_vac}')
         for default_vac in WorkingHH().get_vacancies(keyword, number):
             vac_list.append(default_vac)
