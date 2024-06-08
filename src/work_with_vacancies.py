@@ -22,7 +22,7 @@ class Vacancies:
 
     def __repr__(self):
         return (f"{self.__class__.__name__}('{self.__name}','{self.__salary_from}','{self.__salary_to}',"
-                f"'{self.__currency}','{self.__area}','{self.__requirement}', '{self.__url}')")
+                f"'{self.__currency}','{self.__area}','{self.__requirement}','{self.__url}')")
 
     def __str__(self):
         return (f'Вакансия: {self.__name}\n'
