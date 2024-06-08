@@ -9,12 +9,15 @@ class ApiService(ABC):
 
 
 class WorkingHH(ApiService):
-
+    """
+    API Сервис от HeadHunter
+    """
     def __init__(self):
-        self.url_get = 'https://api.hh.ru/vacancies'
-        self.header = {'User-Agent': 'HH-User-Agent'}
+        self.__url_get = 'https://api.hh.ru/vacancies'
+        self.__header = {'User-Agent': 'HH-User-Agent'}
 
     def get_vacancies(self, keyword, number):
-        response = requests.get(self.url_get, params={'text': keyword, 'area': '113', 'per_page': number})
+        """Получает список указанного кол-ва вакансий по ключевому слову"""
+        response = requests.get(self.__url_get, params={'text': keyword, 'area': '113', 'per_page': number})
         result = response.json()['items']
         return result

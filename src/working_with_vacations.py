@@ -2,7 +2,12 @@ from src.api_service import WorkingHH
 
 
 class Vacancies:
+    """
+    Класс для работы с вакансиями.
 
+    Методы:
+        create_vacancies(cls, data) - получает JSON список и формирует список экземпляров вакансий.
+    """
     def __init__(self, name, salary_from, salary_to, currency, area, requirement, url):
         self.name = name
         self.area = area
@@ -11,7 +16,6 @@ class Vacancies:
         self.currency = currency
         self.url = url
         self.requirement = requirement
-        self.validate()
 
     def __repr__(self):
         return (f"{self.__class__.__name__}('{self.name}','{self.salary_from}','{self.salary_to}','{self.currency}',"
@@ -23,27 +27,6 @@ class Vacancies:
                 f'Местоположение: {self.area}\n'
                 f'Требования: {self.requirement}\n'
                 f'Сcылка на ваканисию: {self.url}')
-
-    def validate(self):
-        if self.area is None:
-            self.area = 'Не указано'
-        if self.salary_from is None:
-            self.salary_from = 0
-        if self.salary_to is None:
-            self.salary_to = 0
-        if self.currency is None:
-            self.currency = ''
-        if self.requirement is None:
-            self.requirement = 'Не указано'
-
-    def to_json(self):
-        return {'name': self.name,
-                'salary_from': self.salary_from,
-                'salary_to': self.salary_to,
-                'currency': self.currency,
-                'area': self.area,
-                'requirement': self.requirement,
-                'url': self.url}
 
     @classmethod
     def create_vacancies(cls, data):

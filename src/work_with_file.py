@@ -24,6 +24,20 @@ class FileWorking(ABC):
 
 
 class WorkWithJSON(FileWorking):
+    """
+    Класс для работы с JSON.
+
+    Методы:
+        __init__(self, file_name: str) - при инициализации создаёт json файл и папку data в корне программы.
+        read_vacancy(self) - читает список json конвертируя его в список.
+        write_vacancy(self, data) - получает список вакансий, конвертирует и записывает JSON.
+        add_vacancy(self, list_vacancies, url_vacancy) - получает вакансии и url и добавляет вакансию по URL в JSON.
+        del_vacancy(self, url_vacancy) - получает url и удаляет вакансию по URL из JSON.
+        clear_json(self) - очищает список.
+        filter_by_keyword(cls, keywords) - получает список слов, фильтрует JSON. Предлагает записать результат.
+        filter_by_salary(cls, salary) - получает желаемую сумму, фильтрует JSON. Предлагает записать результат.
+        sort_to_salary_from(self) - сортирует по зар.плате от и до.
+    """
 
     def __init__(self, file_name: str):
         if not os.path.exists(f'{ROOT_DIR}/data'):
@@ -33,16 +47,16 @@ class WorkWithJSON(FileWorking):
         else:
             self.path = os.path.join(ROOT_DIR, 'data', file_name)
 
-    def read_vacancy(self):
+    def read_vacancy(self) -> list[dict]:
         with open(self.path, 'r', encoding="utf8") as file:
             vac_list = json.load(file)
             return vac_list
 
-    def write_vacancy(self, data):
+    def write_vacancy(self, data: list[dict]):
         with open(self.path, 'w', encoding="utf8") as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
-    def add_vacancy(self, list_vacancies, url_vacancy):
+    def add_vacancy(self, list_vacancies: list[dict], url_vacancy: str):
         save_list_vacancies: list[dict] = self.read_vacancy()
         list_url = url_vacancy.replace(' ', '').lower().split(',')
         for url in list_url:
@@ -53,7 +67,7 @@ class WorkWithJSON(FileWorking):
                     print(f'Вакансия: {vac["name"]} добавлена.')
                     self.write_vacancy(save_list_vacancies)
 
-    def del_vacancy(self, url_vacancy):
+    def del_vacancy(self, url_vacancy: str):
         file_vacancy: list[dict] = self.read_vacancy()
         list_url = url_vacancy.replace(' ', '').lower().split(',')
         for url in list_url:
@@ -68,7 +82,7 @@ class WorkWithJSON(FileWorking):
         self.write_vacancy(file_vacancy)
 
     @classmethod
-    def filter_by_keyword(cls, keywords):
+    def filter_by_keyword(cls, keywords: str):
         vacancies = cls('vacancies.json')
         list_vacancies = vacancies.read_vacancy()
         vac_list_filter = []
@@ -88,7 +102,7 @@ class WorkWithJSON(FileWorking):
             vacancies.write_vacancy(vac_list_filter)
 
     @classmethod
-    def filter_by_salary(cls, salary):
+    def filter_by_salary(cls, salary: str):
         vacancies = cls('vacancies.json')
         list_vacancies = vacancies.read_vacancy()
         vac_list_filter = []
@@ -118,7 +132,7 @@ class WorkWithJSON(FileWorking):
         if input_user.lower() == 'да':
             vacancies.write_vacancy(vac_list_filter)
 
-    def sort_to_salary_from(self):
+    def sort_to_salary_from(self) -> list[list[dict]]:
         vac_list = self.read_vacancy()
         sorted_vac_list = []
         for i in sorted(vac_list,
