@@ -91,9 +91,10 @@ class WorkWithJSON(FileWorking):
         if list_vacancies is not None:
             for i in list_vacancies:
                 for keyword in list_keyword:
-                    if keyword in (i['name']).lower() or keyword in (i['snippet']['requirement']).lower():
-                        if i not in vac_list_filter:
-                            vac_list_filter.append(i)
+                    if i['snippet']['requirement'] is not None:
+                        if keyword in (i['name']).lower() or keyword in (i['snippet']['requirement']).lower():
+                            if i not in vac_list_filter:
+                                vac_list_filter.append(i)
         for i in Vacancies.create_vacancies(vac_list_filter):
             print(f'\n{i}')
         print(f'\nНайдено по ключевым словам {len(vac_list_filter)} вакансий.')

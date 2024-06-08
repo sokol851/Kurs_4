@@ -53,7 +53,12 @@ class Vacancies:
                 currency = vac.get('salary').get('currency')
             except AttributeError:
                 currency = ''
-            requirement = vac.get('snippet').get('requirement')
+            if vac.get('snippet').get('requirement') is None:
+                requirement = 'Не указано.'
+            else:
+                requirement = ((vac.get('snippet').get('requirement')).replace('<highlighttext>', '<')
+                               .replace('</highlighttext>', '>'))
+
             vacancy = cls(name, salary_from, salary_to, currency, area, requirement, url)
             vacancies.append(vacancy)
         return vacancies
