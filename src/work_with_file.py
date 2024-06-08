@@ -15,7 +15,7 @@ class FileWorking(ABC):
         pass
 
     @abstractmethod
-    def add_vacancy(self, vacancy):
+    def add_vacancy(self, list_vacancies, vacancy):
         pass
 
     @abstractmethod
@@ -28,10 +28,12 @@ class WorkWithJSON(FileWorking):
     def __init__(self, file_name: str):
         if not os.path.exists(f'{ROOT_DIR}/data'):
             os.mkdir(f'{ROOT_DIR}/data')
-        self.path = os.path.join(ROOT_DIR, 'data', file_name)
+            self.path = os.path.join(ROOT_DIR, 'data', file_name)
+            self.write_vacancy([])
+        else:
+            self.path = os.path.join(ROOT_DIR, 'data', file_name)
 
     def read_vacancy(self):
-
         with open(self.path, 'r', encoding="utf8") as file:
             vac_list = json.load(file)
             return vac_list
@@ -40,17 +42,25 @@ class WorkWithJSON(FileWorking):
         with open(self.path, 'w', encoding="utf8") as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
-    def add_vacancy(self, vacancy):
-        file_vacancy: list[dict] = self.read_vacancy()
-        file_vacancy.append(vacancy)
-        self.write_vacancy(file_vacancy)
+    def add_vacancy(self, list_vacancies, url_vacancy):
+        save_list_vacancies: list[dict] = self.read_vacancy()
+        list_url = url_vacancy.replace(' ', '').lower().split(',')
+        for url in list_url:
+            for vac in list_vacancies:
+                if vac['alternate_url'] == url:
+                    if vac not in save_list_vacancies:
+                        save_list_vacancies.append(vac)
+                    print(f'Вакансия: {vac["name"]} добавлена.')
+                    self.write_vacancy(save_list_vacancies)
 
     def del_vacancy(self, url_vacancy):
         file_vacancy: list[dict] = self.read_vacancy()
-        for i in file_vacancy:
-            if i['alternate_url'] == url_vacancy:
-                file_vacancy.remove(i)
-                print(f'Вакансия: {i["name"]} удалена.')
+        list_url = url_vacancy.replace(' ', '').lower().split(',')
+        for url in list_url:
+            for i in file_vacancy:
+                if i['alternate_url'] == url:
+                    file_vacancy.remove(i)
+                    print(f'Вакансия: {i["name"]} удалена.')
         self.write_vacancy(file_vacancy)
 
     def clear_json(self):
@@ -62,14 +72,13 @@ class WorkWithJSON(FileWorking):
         vacancies = cls('vacancies.json')
         list_vacancies = vacancies.read_vacancy()
         vac_list_filter = []
-        list_keyword = keywords.split(',')
+        list_keyword = keywords.replace(' ', '').lower().split(',')
         if list_vacancies is not None:
-            for keyword in list_keyword:
-                for i in list_vacancies:
-                    if keyword.lower() in (i['name']).lower():
-                        vac_list_filter.append(i)
-                    if keyword.lower() in (i['snippet']['requirement']).lower():
-                        vac_list_filter.append(i)
+            for i in list_vacancies:
+                for keyword in list_keyword:
+                    if keyword in (i['name']).lower() or keyword in (i['snippet']['requirement']).lower():
+                        if i not in vac_list_filter:
+                            vac_list_filter.append(i)
         for i in Vacancies.create_vacancies(vac_list_filter):
             print(f'\n{i}')
         print(f'\nНайдено по ключевым словам {len(vac_list_filter)} вакансий.')
@@ -83,6 +92,10 @@ class WorkWithJSON(FileWorking):
         vacancies = cls('vacancies.json')
         list_vacancies = vacancies.read_vacancy()
         vac_list_filter = []
+        if not salary.isdigit():
+            while not salary.isdigit():
+                print(f'Неверно указана оплата!')
+                salary = input('Введите оплату в цифрах:')
         if int(salary) == 0:
             vac_list_filter = list_vacancies
         else:
@@ -91,10 +104,12 @@ class WorkWithJSON(FileWorking):
                     if i['salary'] is not None:
                         if i['salary']['from'] is not None:
                             if int(i['salary']['from']) >= int(salary):
-                                vac_list_filter.append(i)
+                                if i not in vac_list_filter:
+                                    vac_list_filter.append(i)
                         if i['salary']['to'] is not None:
                             if int(i['salary']['to']) >= int(salary):
-                                vac_list_filter.append(i)
+                                if i not in vac_list_filter:
+                                    vac_list_filter.append(i)
         for i in Vacancies.create_vacancies(vac_list_filter):
             print(f'\n{i}')
         print(f'\nНайдено по заработной плате {len(vac_list_filter)} вакансий.')
