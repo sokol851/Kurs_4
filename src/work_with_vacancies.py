@@ -6,7 +6,9 @@ class Vacancies:
     Класс для работы с вакансиями.
 
     Методы:
-        create_vacancies(cls, data) - получает JSON список и формирует список экземпляров вакансий.
+        to_json(self) - формирует экземпляр вакансии.
+        create_vacancies(self, data) - получает JSON список и формирует список экземпляров вакансий.
+        vacancies_output(self) - формирует запрос для API с проверками ввода данных и выводит список готовых вакансий.
     """
 
     def __init__(self, name, salary_from, salary_to, currency, area, requirement, url):
@@ -29,11 +31,11 @@ class Vacancies:
                 f'Требования: {self.__requirement}\n'
                 f'Сcылка на ваканисию: {self.__url}')
 
-    def to_json(self):
+    def to_json(self) -> "Vacancies":
         return Vacancies(self.__name, self.__salary_from, self.__salary_to, self.__currency, self.__area,
                          self.__requirement, self.__url)
 
-    def create_vacancies(self, data):
+    def create_vacancies(self, data) -> [list["Vacancies"]]:
         vacancies = []
         for vac in data:
             self.__name = vac.get('name')
@@ -67,9 +69,6 @@ class Vacancies:
         return vacancies
 
     def vacancies_output(self) -> list[dict]:
-        """
-        Функция формирует запрос для API с проверками ввода данных и выводит список готовых вакансий
-        """
         vac_list = []
         keyword = input('Введите запрос для поиска: ')
         if keyword == '':
