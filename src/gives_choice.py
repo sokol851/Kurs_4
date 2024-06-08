@@ -1,8 +1,7 @@
-from src.working_with_vacations import Vacancies
-from src.api_service import WorkingHH
+from src.work_with_vacancies import Vacancies
 from src.work_with_file import WorkWithJSON
-import os
 from config import ROOT_DIR
+import os
 
 
 def gives_choice():
@@ -31,18 +30,19 @@ def gives_choice():
               '4. Просмотр сохранённого списка.\n'
               '5. Фильтр вакансий по ключевому слову.\n'
               '6. Фильтр вакансий по заработной плате.\n'
-              '7. Сортировка списка по заработной плате (По возрастанию).\n'
-              '8. Сортировка списка по заработной плате (По убыванию).\n'
-              '9. Очистка сохранённого списка.\n'
-              '10. Завершить работу.')
-        number = input('Выберите необходимое действие (цифра от 1 до 10):\n')
+              '7. Фильтр вакансия по городу.\n'
+              '8. Сортировка списка по заработной плате (По возрастанию).\n'
+              '9. Сортировка списка по заработной плате (По убыванию).\n'
+              '10. Очистка сохранённого списка.\n'
+              '11. Завершить работу.')
+        number = input('Выберите необходимое действие (цифра от 1 до 11):\n')
         number = number.strip(' ')
-        while not number.isdigit() or int(number) not in range(1, 11):
+        while not number.isdigit() or int(number) not in range(1, 12):
             print('Вы ввели неверный номер! Повторите:')
-            number = input('Выберите необходимое действие (цифра от 1 до 10):\n')
+            number = input('Выберите необходимое действие (цифра от 1 до 11):\n')
             number = number.strip(' ')
         if int(number) == 1:
-            list_vacancies = vacancies_output()
+            list_vacancies = Vacancies.vacancies_output()
             print(f'Записать все результаты?')
             input_user = input('Введите "да" или "нет": ')
             if input_user.lower() == 'да':
@@ -62,47 +62,23 @@ def gives_choice():
         if int(number) == 6:
             vacancies.filter_by_salary(input('Введите желаемую оплату: '))
         if int(number) == 7:
+            vacancies.filter_by_area(input('Введите город: '))
+        if int(number) == 8:
             for i in vacancies.sort_to_salary_from()[0]:
                 print(f'\n{i}')
             print(f'Записать результат?')
             input_user = input('Введите "да" или "нет": ')
             if input_user.lower() == 'да':
                 vacancies.write_vacancy(vacancies.sort_to_salary_from()[1])
-        if int(number) == 8:
+        if int(number) == 9:
             for i in vacancies.sort_to_salary_from()[0][::-1]:
                 print(f'\n{i}')
             print(f'Записать результат?')
             input_user = input('Введите "да" или "нет": ')
             if input_user.lower() == 'да':
                 vacancies.write_vacancy(vacancies.sort_to_salary_from()[1][::-1])
-        if int(number) == 9:
+        if int(number) == 10:
             vacancies.clear_json()
             print('Список очищен')
-        if int(number) == 10:
+        if int(number) == 11:
             return print('Работа завершена!')
-
-
-def vacancies_output():
-    """
-    Функция формирует запрос для API с проверками ввода данных и выводит список готовых вакансий
-    """
-    vac_list = []
-    keyword = input('Введите запрос для поиска: ')
-    if keyword == '':
-        print('Вы не ввели запрос. Будут выведены любые вакансии.')
-    number = input('Введите кол-во вакансий для поиска от 1 до 100: ')
-    while not number.isdigit():
-        print('Неверно выбрано количество вакансий. Могут быть только числа от 1 до 100.')
-        number = input('Введите кол-во вакансий для поиска: ')
-    if number == '':
-        number = 1
-    if int(number) > 100:
-        number = 100
-        print('Не может быть больше 100')
-        input('Нажмите Enter, чтобы продолжить вывод 100 вакансий.')
-    x = WorkingHH().get_vacancies(keyword, number)
-    for visual_vac in Vacancies.create_vacancies(x):
-        print(f'\n{visual_vac}')
-    for default_vac in WorkingHH().get_vacancies(keyword, number):
-        vac_list.append(default_vac)
-    return vac_list

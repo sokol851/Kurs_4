@@ -36,11 +36,17 @@ class Vacancies:
             url = vac.get('alternate_url')
             area = vac.get('area').get('name')
             try:
-                salary_from = vac.get('salary').get('from')
+                if vac.get('salary').get('from') is None:
+                    salary_from = 0
+                else:
+                    salary_from = vac.get('salary').get('from')
             except AttributeError:
                 salary_from = 0
             try:
-                salary_to = vac.get('salary').get('to')
+                if vac.get('salary').get('to') is None:
+                    salary_to = 0
+                else:
+                    salary_to = vac.get('salary').get('to')
             except AttributeError:
                 salary_to = 0
             try:
@@ -51,3 +57,29 @@ class Vacancies:
             vacancy = cls(name, salary_from, salary_to, currency, area, requirement, url)
             vacancies.append(vacancy)
         return vacancies
+
+    @staticmethod
+    def vacancies_output() -> list[dict]:
+        """
+        Функция формирует запрос для API с проверками ввода данных и выводит список готовых вакансий
+        """
+        vac_list = []
+        keyword = input('Введите запрос для поиска: ')
+        if keyword == '':
+            print('Вы не ввели запрос. Будут выведены любые вакансии.')
+        number = input('Введите кол-во вакансий для поиска от 1 до 100: ')
+        while not number.isdigit():
+            print('Неверно выбрано количество вакансий. Могут быть только числа от 1 до 100.')
+            number = input('Введите кол-во вакансий для поиска: ')
+        if number == '':
+            number = 1
+        if int(number) > 100:
+            number = 100
+            print('Не может быть больше 100')
+            input('Нажмите Enter, чтобы продолжить вывод 100 вакансий.')
+        x = WorkingHH().get_vacancies(keyword, number)
+        for visual_vac in Vacancies.create_vacancies(x):
+            print(f'\n{visual_vac}')
+        for default_vac in WorkingHH().get_vacancies(keyword, number):
+            vac_list.append(default_vac)
+        return vac_list

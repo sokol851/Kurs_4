@@ -1,8 +1,8 @@
+from src.work_with_vacancies import Vacancies
 from abc import ABC, abstractmethod
-from src.working_with_vacations import Vacancies
+from config import ROOT_DIR
 import json
 import os
-from config import ROOT_DIR
 
 
 class FileWorking(ABC):
@@ -36,24 +36,25 @@ class WorkWithJSON(FileWorking):
         clear_json(self) - очищает список.
         filter_by_keyword(cls, keywords) - получает список слов, фильтрует JSON. Предлагает записать результат.
         filter_by_salary(cls, salary) - получает желаемую сумму, фильтрует JSON. Предлагает записать результат.
+        filter_by_area(cls, area) - получает город, фильтрует JSON. Предлагает записать результат.
         sort_to_salary_from(self) - сортирует по зар.плате от и до.
     """
 
     def __init__(self, file_name: str):
         if not os.path.exists(f'{ROOT_DIR}/data'):
             os.mkdir(f'{ROOT_DIR}/data')
-            self.path = os.path.join(ROOT_DIR, 'data', file_name)
+            self.__path = os.path.join(ROOT_DIR, 'data', file_name)
             self.write_vacancy([])
         else:
-            self.path = os.path.join(ROOT_DIR, 'data', file_name)
+            self.__path = os.path.join(ROOT_DIR, 'data', file_name)
 
     def read_vacancy(self) -> list[dict]:
-        with open(self.path, 'r', encoding="utf8") as file:
+        with open(self.__path, 'r', encoding="utf8") as file:
             vac_list = json.load(file)
             return vac_list
 
     def write_vacancy(self, data: list[dict]):
-        with open(self.path, 'w', encoding="utf8") as file:
+        with open(self.__path, 'w', encoding="utf8") as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
     def add_vacancy(self, list_vacancies: list[dict], url_vacancy: str):
@@ -127,6 +128,25 @@ class WorkWithJSON(FileWorking):
         for i in Vacancies.create_vacancies(vac_list_filter):
             print(f'\n{i}')
         print(f'\nНайдено по заработной плате {len(vac_list_filter)} вакансий.')
+        print(f'Записать результат?')
+        input_user = input('Введите "да" или "нет": ')
+        if input_user.lower() == 'да':
+            vacancies.write_vacancy(vac_list_filter)
+
+    @classmethod
+    def filter_by_area(cls, area: str):
+        vacancies = cls('vacancies.json')
+        list_vacancies = vacancies.read_vacancy()
+        vac_list_filter = []
+        area = area.replace(' ', '').lower()
+        if list_vacancies is not None:
+            for vac in list_vacancies:
+                if area in (vac['area']['name']).lower():
+                    if vac not in vac_list_filter:
+                        vac_list_filter.append(vac)
+        for i in Vacancies.create_vacancies(vac_list_filter):
+            print(f'\n{i}')
+        print(f'\nНайдено по ключевым словам {len(vac_list_filter)} вакансий.')
         print(f'Записать результат?')
         input_user = input('Введите "да" или "нет": ')
         if input_user.lower() == 'да':
