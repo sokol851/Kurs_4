@@ -77,8 +77,6 @@ class Vacancies:
         while not number.isdigit():
             print('Неверно выбрано количество вакансий. Могут быть только числа от 1 до 100.')
             number = input('Введите кол-во вакансий для поиска: ')
-        if number == '':
-            number = 1
         if int(number) > 100:
             number = 100
             print('Не может быть больше 100')

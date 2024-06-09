@@ -104,21 +104,9 @@ def test_filter_by_area(create_exemplar, path_for_tests_read, monkeypatch):
     assert create_exemplar.filter_by_area('Вымышленный город') == []
 
 
-# def test_sort_to_salary_from(create_exemplar, path_for_tests_read, monkeypatch):
-#     monkeypatch.setattr('builtins.input', lambda _: 'нет')
-
-
-
-
-
-
-
-    # name = 'Tranberd'
-    # funds = 100
-    # # creating iterator object
-    # answers = iter([name, str(funds)])
-    # # using lambda statement for mocking
-    # monkeypatch.setattr('builtins.input', lambda name: next(answers))
-    # player = Player()
-    # assert player.name == name
-    # assert player.funds == funds
+def test_sort_to_salary_from(create_exemplar, path_for_tests_read, monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: 'нет')
+    x = create_exemplar.sort_to_salary_from()[1]
+    assert x[-1]['salary']['from'] > x[-3]['salary']['from']
+    x = x[::-1]
+    assert x[0]['salary']['from'] > x[2]['salary']['from']
