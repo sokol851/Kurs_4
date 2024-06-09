@@ -1,7 +1,5 @@
 from src.work_with_vacancies import Vacancies
 from src.work_with_file import WorkWithJSON
-from config import ROOT_DIR
-import os
 
 
 def gives_choice():
@@ -19,8 +17,7 @@ def gives_choice():
             9. Очистка сохранённого списка.
             10. Завершить работу.
     """
-    path_vacancies = os.path.join(ROOT_DIR, 'data', 'vacancies.json')
-    vacancies = WorkWithJSON(path_vacancies)
+    vacancies = WorkWithJSON('vacancies.json')
     list_vacancies = []
     vac = Vacancies('name', 'salary_from', 'salary_to', 'currency',
                     'area', 'requirement', 'url')

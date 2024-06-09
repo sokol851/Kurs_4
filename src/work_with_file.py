@@ -34,6 +34,7 @@ class WorkWithJSON(FileWorking):
         add_vacancy(self, list_vacancies, url_vacancy) - получает вакансии и url и добавляет вакансию по URL в JSON.
         del_vacancy(self, url_vacancy) - получает url и удаляет вакансию по URL из JSON.
         clear_json(self) - очищает список.
+        ask_to_write(self, data) - получает список вакансий и спрашивает записать ли результат в JSON.
         filter_by_keyword(self, keywords) - получает список слов, фильтрует JSON. Предлагает записать результат.
         filter_by_salary(self, salary) - получает желаемую сумму, фильтрует JSON. Предлагает записать результат.
         filter_by_area(self, area) - получает город, фильтрует JSON. Предлагает записать результат.
@@ -41,22 +42,27 @@ class WorkWithJSON(FileWorking):
     """
 
     def __init__(self, file_name: str):
-        if not os.path.exists(f'{ROOT_DIR}/data'):
-            os.mkdir(f'{ROOT_DIR}/data')
-            self.__path = os.path.join(ROOT_DIR, 'data', file_name)
-            self.write_vacancy([])
-        else:
-            self.__path = os.path.join(ROOT_DIR, 'data', file_name)
+        if file_name != 'test_vacancies_read.json':
+            if not os.path.exists(f'{ROOT_DIR}/data'):
+                os.mkdir(f'{ROOT_DIR}/data')
+                self._path = os.path.join(ROOT_DIR, 'data', file_name)
+                self.write_vacancy([])
+            elif not os.path.exists(f'{ROOT_DIR}/data/{file_name}'):
+                open(f'{ROOT_DIR}/data/{file_name}', 'w', encoding="utf8").close()
+                self._path = os.path.join(ROOT_DIR, 'data', file_name)
+                self.write_vacancy([])
+            else:
+                self._path = os.path.join(ROOT_DIR, 'data', file_name)
         self.__vac = Vacancies('name', 'salary_from', 'salary_to', 'currency',
                                'area', 'requirement', 'url')
 
     def read_vacancy(self) -> list[dict]:
-        with open(self.__path, 'r', encoding="utf8") as file:
+        with open(self._path, 'r', encoding="utf8") as file:
             vac_list = json.load(file)
             return vac_list
 
     def write_vacancy(self, data: list[dict]) -> None:
-        with open(self.__path, 'w', encoding="utf8") as file:
+        with open(self._path, 'w', encoding="utf8") as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
     def add_vacancy(self, list_vacancies: list[dict], url_vacancy: str) -> None:
@@ -84,7 +90,13 @@ class WorkWithJSON(FileWorking):
         file_vacancy: list[dict] = []
         self.write_vacancy(file_vacancy)
 
-    def filter_by_keyword(self, keywords: str) -> None:
+    def ask_to_write(self, data) -> None:
+        print(f'Записать результат?')
+        input_user = input('Введите "да" или "нет": ')
+        if input_user.lower() == 'да':
+            self.write_vacancy(data)
+
+    def filter_by_keyword(self, keywords: str) -> [list[dict]]:
         list_vacancies = self.read_vacancy()
         vac_list_filter = []
         list_keyword = keywords.replace(' ', '').lower().split(',')
@@ -98,12 +110,10 @@ class WorkWithJSON(FileWorking):
         for i in self.__vac.create_vacancies(vac_list_filter):
             print(f'\n{i}')
         print(f'\nНайдено по ключевым словам {len(vac_list_filter)} вакансий.')
-        print(f'Записать результат?')
-        input_user = input('Введите "да" или "нет": ')
-        if input_user.lower() == 'да':
-            self.write_vacancy(vac_list_filter)
+        self.ask_to_write(vac_list_filter)
+        return vac_list_filter
 
-    def filter_by_salary(self, salary: str) -> None:
+    def filter_by_salary(self, salary: str) -> [list[dict]]:
         list_vacancies = self.read_vacancy()
         vac_list_filter = []
         if not salary.isdigit():
@@ -127,12 +137,10 @@ class WorkWithJSON(FileWorking):
         for i in self.__vac.create_vacancies(vac_list_filter):
             print(f'\n{i}')
         print(f'\nНайдено по заработной плате {len(vac_list_filter)} вакансий.')
-        print(f'Записать результат?')
-        input_user = input('Введите "да" или "нет": ')
-        if input_user.lower() == 'да':
-            self.write_vacancy(vac_list_filter)
+        self.ask_to_write(vac_list_filter)
+        return vac_list_filter
 
-    def filter_by_area(self, area: str) -> None:
+    def filter_by_area(self, area: str) -> [list[dict]]:
         list_vacancies = self.read_vacancy()
         vac_list_filter = []
         area = area.replace(' ', '').lower()
@@ -144,10 +152,8 @@ class WorkWithJSON(FileWorking):
         for i in self.__vac.create_vacancies(vac_list_filter):
             print(f'\n{i}')
         print(f'\nНайдено по ключевым словам {len(vac_list_filter)} вакансий.')
-        print(f'Записать результат?')
-        input_user = input('Введите "да" или "нет": ')
-        if input_user.lower() == 'да':
-            self.write_vacancy(vac_list_filter)
+        self.ask_to_write(vac_list_filter)
+        return vac_list_filter
 
     def sort_to_salary_from(self) -> list[list[dict]]:
         vac_list = self.read_vacancy()
