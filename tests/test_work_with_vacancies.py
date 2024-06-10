@@ -46,3 +46,22 @@ def test_create_vacancies(vacancy, read_json):
              f'Требования: Опыт написания кода на Django (+ DRF) от 2х лет. Понимание способов оптимизации SQL '
              f'запросов к БД. \n'
              f'Сcылка на ваканисию: https://hh.ru/vacancy/100523092'))
+
+
+def test_vacancies_output(vacancy, monkeypatch):
+    answers = iter(['python', '1'])
+    monkeypatch.setattr('builtins.input', lambda name: next(answers))
+    assert len(vacancy.vacancies_output()) == 1
+    answers = iter(['', '2'])
+    monkeypatch.setattr('builtins.input', lambda name: next(answers))
+    assert len(vacancy.vacancies_output()) == 2
+    answers = iter(['', 'a', '3'])
+    monkeypatch.setattr('builtins.input', lambda name: next(answers))
+    assert len(vacancy.vacancies_output()) == 3
+    answers = iter(['', '143', ''])
+    monkeypatch.setattr('builtins.input', lambda name: next(answers))
+    assert len(vacancy.vacancies_output()) == 100
+    answers = iter(['', 1])
+    monkeypatch.setattr('builtins.input', lambda name: next(answers))
+    with pytest.raises(AttributeError):
+        vacancy.vacancies_output()

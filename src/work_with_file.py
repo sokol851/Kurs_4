@@ -42,7 +42,7 @@ class WorkWithJSON(FileWorking):
     """
 
     def __init__(self, file_name: str):
-        if file_name != 'test_vacancies_read.json':
+        if file_name != 'test_vacancies.json':
             if not os.path.exists(f'{ROOT_DIR}/data'):
                 os.mkdir(f'{ROOT_DIR}/data')
                 self._path = os.path.join(ROOT_DIR, 'data', file_name)

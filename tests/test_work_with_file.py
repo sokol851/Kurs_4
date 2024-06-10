@@ -6,7 +6,12 @@ from config import ROOT_DIR
 
 @pytest.fixture
 def create_exemplar():
-    return WorkWithJSON('test_vacancies_read.json')
+    return WorkWithJSON('test_vacancies.json')
+
+
+@pytest.fixture
+def path_for_tests_read_original(create_exemplar):
+    create_exemplar._path = os.path.join(f'{ROOT_DIR}/data/vacancies.json')
 
 
 @pytest.fixture
@@ -22,6 +27,22 @@ def path_for_tests_write(create_exemplar):
 @pytest.fixture
 def data():
     return [{'id': '1'}, {'id': '2'}, {'id': '3'}], [{'name': '1', 'alternate_url': '4'}], [{'id'}], {'id': 'added'}
+
+
+def test_availability_json(path_for_tests_read_original):
+    exemplar = WorkWithJSON('vacancies.json')
+    assert exemplar.read_vacancy() is not None
+    backup_list = exemplar.read_vacancy()
+    # Удаляем файл, убеждаемся, что программа создала его сама при инициализации.
+    os.remove(f'{ROOT_DIR}/data/vacancies.json')
+    exemplar = WorkWithJSON('vacancies.json')
+    assert exemplar.read_vacancy() is not None
+    # Удаляем директорию, убеждаемся, что программа создала его сама при инициализации.
+    os.remove(f'{ROOT_DIR}/data/vacancies.json')
+    os.rmdir(f'{ROOT_DIR}/data')
+    exemplar = WorkWithJSON('vacancies.json')
+    assert exemplar.read_vacancy() is not None
+    exemplar.write_vacancy(backup_list)
 
 
 def test_read_work_with_json(create_exemplar, path_for_tests_read):
