@@ -1,0 +1,838 @@
+[
+    {
+        "id": "100523092",
+        "premium": false,
+        "name": "Middle Python Developer",
+        "department": null,
+        "has_test": false,
+        "response_letter_required": false,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": {
+            "from": 150000,
+            "to": 250000,
+            "currency": "RUR",
+            "gross": false
+        },
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": null,
+        "response_url": null,
+        "sort_point_distance": null,
+        "published_at": "2024-05-28T17:52:13+0300",
+        "created_at": "2024-05-28T17:52:13+0300",
+        "archived": false,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=100523092",
+        "show_logo_in_search": null,
+        "insider_interview": null,
+        "url": "https://api.hh.ru/vacancies/100523092?host=hh.ru",
+        "alternate_url": "https://hh.ru/vacancy/100523092",
+        "relations": [],
+        "employer": {
+            "id": "5992859",
+            "name": "Ошка",
+            "url": "https://api.hh.ru/employers/5992859",
+            "alternate_url": "https://hh.ru/employer/5992859",
+            "logo_urls": {
+                "240": "https://img.hhcdn.ru/employer-logo/6573274.png",
+                "90": "https://img.hhcdn.ru/employer-logo/6573273.png",
+                "original": "https://img.hhcdn.ru/employer-logo-original/1238210.png"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=5992859",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "snippet": {
+            "requirement": "Опыт написания кода на Django (+ DRF) от 2х лет. Понимание способов оптимизации SQL запросов к БД. ",
+            "responsibility": "Разработка сервиса для оплаты покупок в криптовалюте. Платформу можно будет интегрировать в сайты для получения оплаты услуг и товаров в..."
+        },
+        "contacts": null,
+        "schedule": {
+            "id": "remote",
+            "name": "Удаленная работа"
+        },
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "professional_roles": [
+            {
+                "id": "40",
+                "name": "Другое"
+            }
+        ],
+        "accept_incomplete_resumes": false,
+        "experience": {
+            "id": "between1And3",
+            "name": "От 1 года до 3 лет"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "adv_response_url": null,
+        "is_adv_vacancy": false,
+        "adv_context": null
+    },
+    {
+        "id": "99019326",
+        "premium": false,
+        "name": "Country Commercial Controller",
+        "department": null,
+        "has_test": false,
+        "response_letter_required": false,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": {
+            "from": 280000,
+            "to": null,
+            "currency": "RUR",
+            "gross": true
+        },
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": null,
+        "response_url": null,
+        "sort_point_distance": null,
+        "published_at": "2024-05-15T10:50:52+0300",
+        "created_at": "2024-05-15T10:50:52+0300",
+        "archived": false,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=99019326",
+        "show_logo_in_search": null,
+        "insider_interview": null,
+        "url": "https://api.hh.ru/vacancies/99019326?host=hh.ru",
+        "alternate_url": "https://hh.ru/vacancy/99019326",
+        "relations": [],
+        "employer": {
+            "id": "1947314",
+            "name": "ANCOR",
+            "url": "https://api.hh.ru/employers/1947314",
+            "alternate_url": "https://hh.ru/employer/1947314",
+            "logo_urls": {
+                "original": "https://img.hhcdn.ru/employer-logo-original/785003.png",
+                "240": "https://img.hhcdn.ru/employer-logo/3580904.png",
+                "90": "https://img.hhcdn.ru/employer-logo/3580903.png"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=1947314",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "snippet": {
+            "requirement": "Bachelor’s Degree in accounting/Financial Controlling, and/or CMA, CPA, MBA, ACCA. At least 5 to 10 years of...",
+            "responsibility": "Drive sales & margin outlook and realization. Track & trace compared to ASR/RAF/<highlighttext>PY</highlighttext> on Price/Contribution Margin. /Gross Margin / Volume. "
+        },
+        "contacts": null,
+        "schedule": {
+            "id": "fullDay",
+            "name": "Полный день"
+        },
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "professional_roles": [
+            {
+                "id": "136",
+                "name": "Финансовый контролер"
+            }
+        ],
+        "accept_incomplete_resumes": false,
+        "experience": {
+            "id": "between3And6",
+            "name": "От 3 до 6 лет"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "adv_response_url": null,
+        "is_adv_vacancy": false,
+        "adv_context": null
+    },
+    {
+        "id": "101443570",
+        "premium": false,
+        "name": "ABAP разработчик HR",
+        "department": null,
+        "has_test": false,
+        "response_letter_required": false,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": null,
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": null,
+        "response_url": null,
+        "sort_point_distance": null,
+        "published_at": "2024-06-06T16:22:45+0300",
+        "created_at": "2024-06-06T16:22:45+0300",
+        "archived": false,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=101443570",
+        "branding": {
+            "type": "MAKEUP",
+            "tariff": null
+        },
+        "show_logo_in_search": true,
+        "insider_interview": null,
+        "url": "https://api.hh.ru/vacancies/101443570?host=hh.ru",
+        "alternate_url": "https://hh.ru/vacancy/101443570",
+        "relations": [],
+        "employer": {
+            "id": "9778697",
+            "name": "Цифровые технологии и платформы",
+            "url": "https://api.hh.ru/employers/9778697",
+            "alternate_url": "https://hh.ru/employer/9778697",
+            "logo_urls": {
+                "240": "https://img.hhcdn.ru/employer-logo/6596526.png",
+                "90": "https://img.hhcdn.ru/employer-logo/6596525.png",
+                "original": "https://img.hhcdn.ru/employer-logo-original/1244023.png"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=9778697",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "snippet": {
+            "requirement": "Опыт работы c модулем HR (PA, <highlighttext>PY</highlighttext>, PT, OM). Опыт использования в разработках SAP Enjoy controls (ALV Grid, ALV Tree...",
+            "responsibility": "Участие в развитии и сопровождении систем SAP S/4 Hana. Разработка по спецификациям от консультантов. Анализ производительности и оптимизация существующих..."
+        },
+        "contacts": null,
+        "schedule": {
+            "id": "remote",
+            "name": "Удаленная работа"
+        },
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "professional_roles": [
+            {
+                "id": "96",
+                "name": "Программист, разработчик"
+            }
+        ],
+        "accept_incomplete_resumes": false,
+        "experience": {
+            "id": "between1And3",
+            "name": "От 1 года до 3 лет"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "adv_response_url": null,
+        "is_adv_vacancy": false,
+        "adv_context": null
+    },
+    {
+        "id": "98972213",
+        "premium": false,
+        "name": "Специалист отдела разработки ПО",
+        "department": {
+            "id": "4649269-4649269-innoteh",
+            "name": "ГК Иннотех | Финтех (Иннотех)"
+        },
+        "has_test": false,
+        "response_letter_required": false,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": null,
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": null,
+        "response_url": null,
+        "sort_point_distance": null,
+        "published_at": "2024-05-14T21:49:29+0300",
+        "created_at": "2024-05-14T21:49:29+0300",
+        "archived": false,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=98972213",
+        "branding": {
+            "type": "MAKEUP",
+            "tariff": null
+        },
+        "show_logo_in_search": true,
+        "insider_interview": null,
+        "url": "https://api.hh.ru/vacancies/98972213?host=hh.ru",
+        "alternate_url": "https://hh.ru/vacancy/98972213",
+        "relations": [],
+        "employer": {
+            "id": "4649269",
+            "name": "Т1",
+            "url": "https://api.hh.ru/employers/4649269",
+            "alternate_url": "https://hh.ru/employer/4649269",
+            "logo_urls": {
+                "240": "https://img.hhcdn.ru/employer-logo/6590382.png",
+                "90": "https://img.hhcdn.ru/employer-logo/6590381.png",
+                "original": "https://img.hhcdn.ru/employer-logo-original/1242487.png"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=4649269",
+            "accredited_it_employer": true,
+            "trusted": true
+        },
+        "snippet": {
+            "requirement": "Знания и навыки (желательные): bash, docker, git. Опыт в написании .<highlighttext>py</highlighttext>, .sh скриптов. Понимание принципов ООП, алгоритмов и структур данных. ",
+            "responsibility": "Участие в разработке, тестировании и внедрении решений автоматизации практик тестирования ИБ. Осуществление консультационной поддержки разработанных решений. Участие в интеграции инструментов..."
+        },
+        "contacts": null,
+        "schedule": {
+            "id": "fullDay",
+            "name": "Полный день"
+        },
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "professional_roles": [
+            {
+                "id": "96",
+                "name": "Программист, разработчик"
+            }
+        ],
+        "accept_incomplete_resumes": false,
+        "experience": {
+            "id": "between1And3",
+            "name": "От 1 года до 3 лет"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "adv_response_url": null,
+        "is_adv_vacancy": false,
+        "adv_context": null
+    },
+    {
+        "id": "100365124",
+        "premium": false,
+        "name": "Data scientist/ML engineer (Рекомендательная система)",
+        "department": {
+            "id": "8620-8620-ramb",
+            "name": "Rambler&Co"
+        },
+        "has_test": false,
+        "response_letter_required": false,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": null,
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": null,
+        "response_url": null,
+        "sort_point_distance": null,
+        "published_at": "2024-05-27T14:13:47+0300",
+        "created_at": "2024-05-27T14:13:47+0300",
+        "archived": false,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=100365124",
+        "branding": {
+            "type": "MAKEUP",
+            "tariff": null
+        },
+        "show_logo_in_search": true,
+        "insider_interview": null,
+        "url": "https://api.hh.ru/vacancies/100365124?host=hh.ru",
+        "alternate_url": "https://hh.ru/vacancy/100365124",
+        "relations": [],
+        "employer": {
+            "id": "8620",
+            "name": "Rambler&Co",
+            "url": "https://api.hh.ru/employers/8620",
+            "alternate_url": "https://hh.ru/employer/8620",
+            "logo_urls": {
+                "original": "https://img.hhcdn.ru/employer-logo-original/911656.jpeg",
+                "240": "https://img.hhcdn.ru/employer-logo/4087312.jpeg",
+                "90": "https://img.hhcdn.ru/employer-logo/4087311.jpeg"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=8620",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "snippet": {
+            "requirement": "Умения писать и читать код на python и SQL. Коммерческий опыт разработки от 1.5 лет. Будет плюсом: Умение писать...",
+            "responsibility": "Проект - рекомендательная система, которая подбирает для пользователей наиболее релевантный контент, повышая продуктовые метрики. Рекомендации строятся в рантайме на каждый заход..."
+        },
+        "contacts": null,
+        "schedule": {
+            "id": "remote",
+            "name": "Удаленная работа"
+        },
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "professional_roles": [
+            {
+                "id": "165",
+                "name": "Дата-сайентист"
+            }
+        ],
+        "accept_incomplete_resumes": false,
+        "experience": {
+            "id": "between1And3",
+            "name": "От 1 года до 3 лет"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "adv_response_url": null,
+        "is_adv_vacancy": false,
+        "adv_context": null
+    },
+    {
+        "id": "100743800",
+        "premium": false,
+        "name": "Инженер-физик (ультразвук)",
+        "department": null,
+        "has_test": false,
+        "response_letter_required": true,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": {
+            "from": 150000,
+            "to": 200000,
+            "currency": "RUR",
+            "gross": false
+        },
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": null,
+        "response_url": null,
+        "sort_point_distance": null,
+        "published_at": "2024-05-30T18:32:55+0300",
+        "created_at": "2024-05-30T18:32:55+0300",
+        "archived": false,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=100743800",
+        "show_logo_in_search": null,
+        "insider_interview": null,
+        "url": "https://api.hh.ru/vacancies/100743800?host=hh.ru",
+        "alternate_url": "https://hh.ru/vacancy/100743800",
+        "relations": [],
+        "employer": {
+            "id": "10786919",
+            "name": "Шахмурадян Михаил Андреевич",
+            "url": "https://api.hh.ru/employers/10786919",
+            "alternate_url": "https://hh.ru/employer/10786919",
+            "logo_urls": {
+                "240": "https://img.hhcdn.ru/employer-logo/6553382.png",
+                "90": "https://img.hhcdn.ru/employer-logo/6553381.png",
+                "original": "https://img.hhcdn.ru/employer-logo-original/1233235.png"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=10786919",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "snippet": {
+            "requirement": "...статистических методов анализа данных. Умение работать с библиотеками NumPy, SciPy, Matplotlib, Pandas, PyWavelets, h5<highlighttext>py</highlighttext>, PyCUDA, Pillow и PyOpenCL.",
+            "responsibility": "Выдвижение и верификация научных гипотез (выполнение экспериментов по воздействию ультразвуковых частот на биологические среды для анализа деформационных свойств). "
+        },
+        "contacts": null,
+        "schedule": {
+            "id": "remote",
+            "name": "Удаленная работа"
+        },
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": true,
+        "professional_roles": [
+            {
+                "id": "79",
+                "name": "Научный специалист, исследователь"
+            }
+        ],
+        "accept_incomplete_resumes": false,
+        "experience": {
+            "id": "moreThan6",
+            "name": "Более 6 лет"
+        },
+        "employment": {
+            "id": "project",
+            "name": "Проектная работа"
+        },
+        "adv_response_url": null,
+        "is_adv_vacancy": false,
+        "adv_context": null
+    },
+    {
+        "id": "91052741",
+        "premium": false,
+        "name": "Business Development Manager",
+        "department": null,
+        "has_test": false,
+        "response_letter_required": false,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": null,
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": {
+            "city": "городской округ Красногорск",
+            "street": "Новорижское шоссе, 26-й километр",
+            "building": "к4",
+            "lat": 55.785402,
+            "lng": 37.242301,
+            "description": null,
+            "raw": "городской округ Красногорск, Новорижское шоссе, 26-й километр, к4",
+            "metro": null,
+            "metro_stations": [],
+            "id": "13079225"
+        },
+        "response_url": null,
+        "sort_point_distance": null,
+        "published_at": "2024-05-15T10:02:47+0300",
+        "created_at": "2024-05-15T10:02:47+0300",
+        "archived": false,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=91052741",
+        "branding": {
+            "type": "MAKEUP",
+            "tariff": null
+        },
+        "show_logo_in_search": true,
+        "insider_interview": null,
+        "url": "https://api.hh.ru/vacancies/91052741?host=hh.ru",
+        "alternate_url": "https://hh.ru/vacancy/91052741",
+        "relations": [],
+        "employer": {
+            "id": "947",
+            "name": "Health & Nutrition",
+            "url": "https://api.hh.ru/employers/947",
+            "alternate_url": "https://hh.ru/employer/947",
+            "logo_urls": {
+                "original": "https://img.hhcdn.ru/employer-logo-original/1212577.png",
+                "240": "https://img.hhcdn.ru/employer-logo/6470758.png",
+                "90": "https://img.hhcdn.ru/employer-logo/6470757.png"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=947",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "snippet": {
+            "requirement": "University Degree (Business education is a +). At least 7-10 years of experience in large international companies, within Catman...",
+            "responsibility": "Coverage plans for channel. Channel promo plans (based on best practices, <highlighttext>PY</highlighttext> approach and ROI evaluation). Sales resuъlts diagnosis. "
+        },
+        "contacts": null,
+        "schedule": {
+            "id": "fullDay",
+            "name": "Полный день"
+        },
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "professional_roles": [
+            {
+                "id": "157",
+                "name": "Руководитель отдела аналитики"
+            }
+        ],
+        "accept_incomplete_resumes": false,
+        "experience": {
+            "id": "moreThan6",
+            "name": "Более 6 лет"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "adv_response_url": null,
+        "is_adv_vacancy": false,
+        "adv_context": null
+    },
+    {
+        "id": "98806038",
+        "premium": false,
+        "name": "Специалист по автоматизации тестирования (STB Linux)",
+        "department": null,
+        "has_test": false,
+        "response_letter_required": false,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": null,
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": {
+            "city": "Москва",
+            "street": "проспект Вернадского",
+            "building": "41",
+            "lat": 55.67463426053203,
+            "lng": 37.503359087713775,
+            "description": null,
+            "raw": "Москва, проспект Вернадского, 41",
+            "metro": {
+                "station_name": "Проспект Вернадского",
+                "line_name": "Сокольническая",
+                "station_id": "1.118",
+                "line_id": "1",
+                "lat": 55.676549,
+                "lng": 37.504584
+            },
+            "metro_stations": [
+                {
+                    "station_name": "Проспект Вернадского",
+                    "line_name": "Сокольническая",
+                    "station_id": "1.118",
+                    "line_id": "1",
+                    "lat": 55.676549,
+                    "lng": 37.504584
+                }
+            ],
+            "id": "5095790"
+        },
+        "response_url": null,
+        "sort_point_distance": null,
+        "published_at": "2024-05-13T14:27:22+0300",
+        "created_at": "2024-05-13T14:27:22+0300",
+        "archived": false,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=98806038",
+        "show_logo_in_search": null,
+        "insider_interview": null,
+        "url": "https://api.hh.ru/vacancies/98806038?host=hh.ru",
+        "alternate_url": "https://hh.ru/vacancy/98806038",
+        "relations": [],
+        "employer": {
+            "id": "3144945",
+            "name": "Ростелеком Информационные Технологии",
+            "url": "https://api.hh.ru/employers/3144945",
+            "alternate_url": "https://hh.ru/employer/3144945",
+            "logo_urls": {
+                "240": "https://img.hhcdn.ru/employer-logo/2870681.png",
+                "90": "https://img.hhcdn.ru/employer-logo/2870680.png",
+                "original": "https://img.hhcdn.ru/employer-logo-original/607382.png"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=3144945",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "snippet": {
+            "requirement": "Опыт работы в должности специалиста по тестированию от 1,5 лет; Практический опыт тестирования UI и работы с rest-backend...",
+            "responsibility": "Разрабатывать автотесты для приставок к ТВ (STB Linux). Мы пишем UI-автотесты на python + py.test + webdriver-подобный фреймворк..."
+        },
+        "contacts": null,
+        "schedule": {
+            "id": "fullDay",
+            "name": "Полный день"
+        },
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "professional_roles": [
+            {
+                "id": "124",
+                "name": "Тестировщик"
+            }
+        ],
+        "accept_incomplete_resumes": false,
+        "experience": {
+            "id": "between1And3",
+            "name": "От 1 года до 3 лет"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "adv_response_url": null,
+        "is_adv_vacancy": false,
+        "adv_context": null
+    },
+    {
+        "id": "98332022",
+        "premium": false,
+        "name": "ABAP-разработчик SAP АХД",
+        "department": {
+            "id": "80-80-bank",
+            "name": " Альфа-Банк"
+        },
+        "has_test": false,
+        "response_letter_required": false,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": null,
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": null,
+        "response_url": null,
+        "sort_point_distance": null,
+        "published_at": "2024-05-21T10:35:51+0300",
+        "created_at": "2024-05-21T10:35:51+0300",
+        "archived": false,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=98332022",
+        "branding": {
+            "type": "MAKEUP",
+            "tariff": null
+        },
+        "show_logo_in_search": true,
+        "insider_interview": null,
+        "url": "https://api.hh.ru/vacancies/98332022?host=hh.ru",
+        "alternate_url": "https://hh.ru/vacancy/98332022",
+        "relations": [],
+        "employer": {
+            "id": "80",
+            "name": "Альфа-Банк",
+            "url": "https://api.hh.ru/employers/80",
+            "alternate_url": "https://hh.ru/employer/80",
+            "logo_urls": {
+                "original": "https://img.hhcdn.ru/employer-logo-original/663873.png",
+                "240": "https://img.hhcdn.ru/employer-logo/3096625.png",
+                "90": "https://img.hhcdn.ru/employer-logo/3096624.png"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=80",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "snippet": {
+            "requirement": "Высшее образование(математическое/техническое). Уверенные навыки разработки приложений на SAP UI5 от 2 лет. Уверенные навыки разработки на JavaScript. ",
+            "responsibility": "Взаимодействовать с консультантами по выявлению и уточнению требований по автоматизации SAP АХД. Выполнять доработку системы SAP АХД. Устранять дефекты и..."
+        },
+        "contacts": null,
+        "schedule": {
+            "id": "remote",
+            "name": "Удаленная работа"
+        },
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "professional_roles": [
+            {
+                "id": "96",
+                "name": "Программист, разработчик"
+            }
+        ],
+        "accept_incomplete_resumes": false,
+        "experience": {
+            "id": "between1And3",
+            "name": "От 1 года до 3 лет"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "adv_response_url": null,
+        "is_adv_vacancy": false,
+        "adv_context": null
+    },
+    {
+        "id": "99307353",
+        "premium": false,
+        "name": "Консультант SAP HR",
+        "department": null,
+        "has_test": false,
+        "response_letter_required": false,
+        "area": {
+            "id": "78",
+            "name": "Самара",
+            "url": "https://api.hh.ru/areas/78"
+        },
+        "salary": null,
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": null,
+        "response_url": null,
+        "sort_point_distance": null,
+        "published_at": "2024-05-24T09:20:51+0300",
+        "created_at": "2024-05-24T09:20:51+0300",
+        "archived": false,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=99307353",
+        "branding": {
+            "type": "MAKEUP",
+            "tariff": null
+        },
+        "show_logo_in_search": true,
+        "insider_interview": null,
+        "url": "https://api.hh.ru/vacancies/99307353?host=hh.ru",
+        "alternate_url": "https://hh.ru/vacancy/99307353",
+        "relations": [],
+        "employer": {
+            "id": "4073",
+            "name": "Т Плюс",
+            "url": "https://api.hh.ru/employers/4073",
+            "alternate_url": "https://hh.ru/employer/4073",
+            "logo_urls": {
+                "90": "https://img.hhcdn.ru/employer-logo/1586482.jpeg",
+                "original": "https://img.hhcdn.ru/employer-logo-original/286022.jpg",
+                "240": "https://img.hhcdn.ru/employer-logo/1586483.jpeg"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=4073",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "snippet": {
+            "requirement": "Опыт внедрения и поддержки SAP HCM (<highlighttext>PY</highlighttext> обязательно). Навыки работы с унифицированными отчетными формами в SAP HCM. Знание ABAP на...",
+            "responsibility": "Поддержка пользователей по функциональности PA/OM/PT/<highlighttext>PY</highlighttext>. Доработка и настройка отчетных форм. Написание технических заданий на разработку."
+        },
+        "contacts": null,
+        "schedule": {
+            "id": "fullDay",
+            "name": "Полный день"
+        },
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "professional_roles": [
+            {
+                "id": "10",
+                "name": "Аналитик"
+            }
+        ],
+        "accept_incomplete_resumes": false,
+        "experience": {
+            "id": "between3And6",
+            "name": "От 3 до 6 лет"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "adv_response_url": null,
+        "is_adv_vacancy": false,
+        "adv_context": null
+    }
+]
