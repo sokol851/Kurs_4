@@ -1,5 +1,6 @@
 from src.work_with_vacancies import Vacancies
 from src.work_with_file import WorkWithJSON
+from src.functions import filter_by_keyword, filter_by_salary, filter_by_area, sort_to_salary_from
 
 
 def gives_choice():
@@ -42,9 +43,9 @@ def gives_choice():
             number = input('Выберите необходимое действие (цифра от 1 до 11):\n')
             number = number.strip(' ')
         if int(number) == 1:
-            vac_list = vac.vacancies_output()
-            vacancies.output_list_vac(vac_list)
-            vacancies.ask_to_write(vac_list)
+            list_vacancies = vac.vacancies_output()
+            vacancies.output_list_vac(list_vacancies)
+            vacancies.ask_to_write(list_vacancies)
         if int(number) == 2:
             vacancies.add_vacancy(list_vacancies, input('Введите URL для сохранения (можно через запятую): '))
         if int(number) == 3:
@@ -53,23 +54,23 @@ def gives_choice():
             vac_list = vacancies.read_vacancy()
             vacancies.output_list_vac(vac_list)
         if int(number) == 5:
-            vac_list_filter = vacancies.filter_by_keyword(input('Введите ключевые слова через запятую: '))
+            vac_list_filter = filter_by_keyword(vacancies, input('Введите ключевые слова через запятую: '))
             vacancies.output_list_vac(vac_list_filter)
             vacancies.ask_to_write(vac_list_filter)
         if int(number) == 6:
-            vac_list_filter = vacancies.filter_by_salary(input('Введите желаемую оплату: '))
+            vac_list_filter = filter_by_salary(vacancies, input('Введите желаемую оплату: '))
             vacancies.output_list_vac(vac_list_filter)
             vacancies.ask_to_write(vac_list_filter)
         if int(number) == 7:
-            vac_list_filter = vacancies.filter_by_area(input('Введите город: '))
+            vac_list_filter = filter_by_area(vacancies, input('Введите город: '))
             vacancies.output_list_vac(vac_list_filter)
             vacancies.ask_to_write(vac_list_filter)
         if int(number) == 8:
-            vac_list = vacancies.sort_to_salary_from()
+            vac_list = sort_to_salary_from(vacancies)
             vacancies.output_list_vac(vac_list)
             vacancies.ask_to_write(vac_list)
         if int(number) == 9:
-            vac_list = vacancies.sort_to_salary_from()[::-1]
+            vac_list = sort_to_salary_from(vacancies)[::-1]
             vacancies.output_list_vac(vac_list)
             vacancies.ask_to_write(vac_list)
         if int(number) == 10:
