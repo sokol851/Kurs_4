@@ -43,42 +43,35 @@ def gives_choice():
             number = number.strip(' ')
         if int(number) == 1:
             list_vacancies = vac.vacancies_output()
-            print(f'Записать все результаты?')
-            input_user = input('Введите "да" или "нет": ')
-            if input_user.lower() == 'да':
-                vacancies.write_vacancy(list_vacancies)
+            vacancies.ask_to_write(list_vacancies)
         if int(number) == 2:
             vacancies.add_vacancy(list_vacancies, input('Введите URL для сохранения (можно через запятую): '))
         if int(number) == 3:
             vacancies.del_vacancy(input('Введите URL для удаления (можно через запятую): '))
         if int(number) == 4:
             vac_list = vacancies.read_vacancy()
-            visual_vac_list = vac.create_vacancies(vac_list)
-            for i in visual_vac_list:
-                print(f'\n{i}')
-            print(f'\nВ списке {len(vac_list)} вакансий.')
+            vacancies.output_list_vac(vac_list)
         if int(number) == 5:
-            vacancies.filter_by_keyword(input('Введите ключевые слова через запятую: '))
+            vac_list_filter = vacancies.filter_by_keyword(input('Введите ключевые слова через запятую: '))
+            vacancies.output_list_vac(vac_list_filter)
+            vacancies.ask_to_write(vac_list_filter)
         if int(number) == 6:
-            vacancies.filter_by_salary(input('Введите желаемую оплату: '))
+            vac_list_filter = vacancies.filter_by_salary(input('Введите желаемую оплату: '))
+            vacancies.output_list_vac(vac_list_filter)
+            vacancies.ask_to_write(vac_list_filter)
         if int(number) == 7:
-            vacancies.filter_by_area(input('Введите город: '))
+            vac_list_filter = vacancies.filter_by_area(input('Введите город: '))
+            vacancies.output_list_vac(vac_list_filter)
+            vacancies.ask_to_write(vac_list_filter)
         if int(number) == 8:
-            for i in vacancies.sort_to_salary_from()[0]:
-                print(f'\n{i}')
-            print(f'Записать результат?')
-            input_user = input('Введите "да" или "нет": ')
-            if input_user.lower() == 'да':
-                vacancies.write_vacancy(vacancies.sort_to_salary_from()[1])
+            vac_list = vacancies.sort_to_salary_from()
+            vacancies.output_list_vac(vac_list)
+            vacancies.ask_to_write(vac_list)
         if int(number) == 9:
-            for i in vacancies.sort_to_salary_from()[0][::-1]:
-                print(f'\n{i}')
-            print(f'Записать результат?')
-            input_user = input('Введите "да" или "нет": ')
-            if input_user.lower() == 'да':
-                vacancies.write_vacancy(vacancies.sort_to_salary_from()[1][::-1])
+            vac_list = vacancies.sort_to_salary_from()[::-1]
+            vacancies.output_list_vac(vac_list)
+            vacancies.ask_to_write(vac_list)
         if int(number) == 10:
             vacancies.clear_json()
-            print('Список очищен')
         if int(number) == 11:
             return print('Работа завершена!')
