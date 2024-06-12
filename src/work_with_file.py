@@ -27,6 +27,7 @@ class WorkWithJSON(FileWorking):
     """
     Класс для работы с JSON.
     """
+    file_name: str
 
     def __init__(self, file_name: str):
         """ При инициализации создаёт json файл и папку data в корне программы. """

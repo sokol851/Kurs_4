@@ -5,6 +5,13 @@ class Vacancies:
     """
     Класс для работы с вакансиями.
     """
+    name: str
+    salary_from: str
+    salary_to: str
+    currency: str
+    area: str
+    requirement: str
+    url: str
 
     def __init__(self, name, salary_from, salary_to, currency, area, requirement, url):
         self.__name = name
@@ -24,7 +31,7 @@ class Vacancies:
                 f'Заработная плата: от {self.__salary_from} до {self.__salary_to} {self.__currency}\n'
                 f'Местоположение: {self.__area}\n'
                 f'Требования: {self.__requirement}\n'
-                f'Сcылка на ваканисию: {self.__url}')
+                f'Сcылка на вакансию: {self.__url}')
 
     def to_json(self) -> "Vacancies":
         """ Формирует экземпляр вакансии. """
@@ -65,7 +72,8 @@ class Vacancies:
             vacancies.append(vacancy)
         return vacancies
 
-    def vacancies_output(self) -> list[dict]:
+    @staticmethod
+    def vacancies_output() -> list[dict]:
         """ Формирует запрос для API с проверками ввода данных и выводит список готовых вакансий. """
         vac_list = []
         keyword = input('Введите запрос для поиска: ')
@@ -79,9 +87,6 @@ class Vacancies:
             number = 100
             print('Не может быть больше 100')
             input('Нажмите Enter, чтобы продолжить вывод 100 вакансий.')
-        x = WorkingHH().get_vacancies(keyword, number)
-        for visual_vac in self.create_vacancies(x):
-            print(f'\n{visual_vac}')
         for default_vac in WorkingHH().get_vacancies(keyword, number):
             vac_list.append(default_vac)
         return vac_list

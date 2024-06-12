@@ -42,8 +42,9 @@ def gives_choice():
             number = input('Выберите необходимое действие (цифра от 1 до 11):\n')
             number = number.strip(' ')
         if int(number) == 1:
-            list_vacancies = vac.vacancies_output()
-            vacancies.ask_to_write(list_vacancies)
+            vac_list = vac.vacancies_output()
+            vacancies.output_list_vac(vac_list)
+            vacancies.ask_to_write(vac_list)
         if int(number) == 2:
             vacancies.add_vacancy(list_vacancies, input('Введите URL для сохранения (можно через запятую): '))
         if int(number) == 3:

@@ -28,7 +28,7 @@ def test_str(vacancy):
                                  f'Заработная плата: от 20000 до 50000 RUR\n'
                                  f'Местоположение: СПб\n'
                                  f'Требования: Выносливый\n'
-                                 f'Сcылка на ваканисию: http://hh.ru/1')
+                                 f'Сcылка на вакансию: http://hh.ru/1')
 
 
 def test_to_json(vacancy):
@@ -45,7 +45,7 @@ def test_create_vacancies(vacancy, read_json):
              f'Местоположение: Москва\n'
              f'Требования: Опыт написания кода на Django (+ DRF) от 2х лет. Понимание способов оптимизации SQL '
              f'запросов к БД. \n'
-             f'Сcылка на ваканисию: https://hh.ru/vacancy/100523092'))
+             f'Сcылка на вакансию: https://hh.ru/vacancy/100523092'))
 
 
 def test_vacancies_output(vacancy, monkeypatch):

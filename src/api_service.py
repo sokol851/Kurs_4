@@ -12,6 +12,9 @@ class WorkingHH(ApiService):
     """
     API Сервис от HeadHunter
     """
+    keyword: str
+    number: str
+
     def __init__(self):
         self.__url_get = 'https://api.hh.ru/vacancies'
         self.__header = {'User-Agent': 'HH-User-Agent'}
