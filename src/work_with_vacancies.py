@@ -4,11 +4,6 @@ from src.api_service import WorkingHH
 class Vacancies:
     """
     Класс для работы с вакансиями.
-
-    Методы:
-        to_json(self) - формирует экземпляр вакансии.
-        create_vacancies(self, data) - получает JSON список и формирует список экземпляров вакансий.
-        vacancies_output(self) - формирует запрос для API с проверками ввода данных и выводит список готовых вакансий.
     """
 
     def __init__(self, name, salary_from, salary_to, currency, area, requirement, url):
@@ -32,10 +27,12 @@ class Vacancies:
                 f'Сcылка на ваканисию: {self.__url}')
 
     def to_json(self) -> "Vacancies":
+        """ Формирует экземпляр вакансии. """
         return Vacancies(self.__name, self.__salary_from, self.__salary_to, self.__currency, self.__area,
                          self.__requirement, self.__url)
 
     def create_vacancies(self, data) -> [list["Vacancies"]]:
+        """ Получает JSON список и формирует список экземпляров вакансий. """
         vacancies = []
         for vac in data:
             self.__name = vac.get('name')
@@ -69,6 +66,7 @@ class Vacancies:
         return vacancies
 
     def vacancies_output(self) -> list[dict]:
+        """ Формирует запрос для API с проверками ввода данных и выводит список готовых вакансий. """
         vac_list = []
         keyword = input('Введите запрос для поиска: ')
         if keyword == '':

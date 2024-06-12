@@ -95,8 +95,7 @@ def test_ask_to_write(create_exemplar, data, path_for_tests_write, monkeypatch):
     assert len(create_exemplar.read_vacancy()) == 0
 
 
-def test_filter_by_keyword(create_exemplar, path_for_tests_read, monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: 'нет')
+def test_filter_by_keyword(create_exemplar, path_for_tests_read):
     assert create_exemplar.filter_by_keyword('sql, python')[0]['id'] == '100523092'
     with pytest.raises(IndexError):
         print(create_exemplar.filter_by_keyword('sql, python')[3])
@@ -106,18 +105,16 @@ def test_filter_by_keyword(create_exemplar, path_for_tests_read, monkeypatch):
 
 
 def test_filter_by_salary(create_exemplar, path_for_tests_read, monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: 'нет')
     assert create_exemplar.filter_by_salary('280000')[0]['salary']['from'] == 280000
     with pytest.raises(AttributeError):
         create_exemplar.filter_by_salary(280000)
     assert create_exemplar.filter_by_salary('99999999999999999999') == []
-    answers = iter(['', '0', 'нет'])
+    answers = iter(['', '0'])
     monkeypatch.setattr('builtins.input', lambda name: next(answers))
     assert create_exemplar.filter_by_salary('') == create_exemplar.read_vacancy()
 
 
-def test_filter_by_area(create_exemplar, path_for_tests_read, monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: 'нет')
+def test_filter_by_area(create_exemplar, path_for_tests_read):
     assert create_exemplar.filter_by_area('МоСкВа')[0]['id'] == '100523092'
     assert create_exemplar.filter_by_area('МоСкВа')[0]['area']['name'] == 'Москва'
     with pytest.raises(AttributeError):
@@ -125,9 +122,8 @@ def test_filter_by_area(create_exemplar, path_for_tests_read, monkeypatch):
     assert create_exemplar.filter_by_area('Вымышленный город') == []
 
 
-def test_sort_to_salary_from(create_exemplar, path_for_tests_read, monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: 'нет')
-    x = create_exemplar.sort_to_salary_from()[1]
+def test_sort_to_salary_from(create_exemplar, path_for_tests_read):
+    x = create_exemplar.sort_to_salary_from()
     assert x[-1]['salary']['from'] > x[-3]['salary']['from']
     x = x[::-1]
     assert x[0]['salary']['from'] > x[2]['salary']['from']
